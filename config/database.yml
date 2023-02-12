@@ -1,0 +1,26 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV.fetch("DATABASE_USERNAME") {'postgres'} %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD") {'Martial@5009'} %>>
+
+
+development:
+  <<: *default
+  database: netflix_clone_api_development
+  username: <%= ENV.fetch("DATABASE_USERNAME") {'postgres'} %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD") {'Martial@5009'} %>
+
+test:
+  <<: *default
+  database: netflix_clone_api_test
+  username: <%= ENV.fetch("DATABASE_USERNAME") {'postgres'} %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD") {'Martial@5009'} %>
+
+production:
+  <<: *default
+  URL: <%= ENV["DATABASE_URL"] %>
+  database: netflix_clone_api_production
+  username: netflix_clone_api
+  password: <%= ENV["NETFLIX_CLONE_API_DATABASE_PASSWORD"] %>
